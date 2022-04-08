@@ -70,9 +70,14 @@
     /* transition: background 0.5s linear; */
     transition: background-image 0.5s linear;
 }
-.mylogin.back1.page {
+
+.mylogin {
     background-image: url("/images/loginback_1.jpg");
 }
+/* 
+.mylogin.back1.page {
+    background-image: url("/images/loginback_1.jpg");
+} */
 
 .bannerxsup {
     background: #d4faff;

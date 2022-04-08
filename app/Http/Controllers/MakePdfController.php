@@ -26,6 +26,7 @@ class MakePdfController extends Controller
 
         $fecha_primera_dosis = (new DateTime($persona->fecha_primera))->format('d/m/Y');
         $fecha_segunda_dosis = (new DateTime($persona->fecha_primera))->modify('+ 41 day')->format('d/m/Y');
+        $fecha_tercera_dosis = (new DateTime($persona->fecha_primera))->modify('+ 100 day')->format('d/m/Y');
 
         $lugar = $persona->sitio;
         $centro_vacunacion = [
@@ -39,7 +40,7 @@ class MakePdfController extends Controller
         $pdf->AddPage();
         // $pdf->SetAutoPageBreak(false);
 
-        $pdf->setSourceFile(__DIR__ . '/../../../resources/pdf/base-vinha.pdf');
+        $pdf->setSourceFile(__DIR__ . '/../../../resources/pdf/base-vinha-2.pdf');
 
         $tplIdx = $pdf->importPage(1);
 
@@ -111,8 +112,23 @@ class MakePdfController extends Controller
          * SITIOS DE VACUNACION
          */
         $pdf->SetFont('Arial', 'B', '12');
-        $pdf->SetXY(133.9, 180);
+        $pdf->SetXY(133, 180);
         $pdf->MultiCell(80, 5, $centro_vacunacion[$lugar], 0, 'L');
+
+
+
+
+        $pdf->SetFont('Arial', 'B', '12');
+        $pdf->SetXY(133, 194 + 17);
+        $pdf->Write(8, strtoupper($fecha_tercera_dosis));
+
+        /**
+         * SITIOS DE VACUNACION
+         */
+        $pdf->SetFont('Arial', 'B', '12');
+        $pdf->SetXY(133.7, 214 + 9);
+        $pdf->MultiCell(80, 5, $centro_vacunacion[$lugar], 0, 'L');
+
 
 
 
@@ -125,6 +141,6 @@ class MakePdfController extends Controller
 
 
         $pdf->Image('../storage/app/public/qr/' . $id . '.png', 153, 45.8, 52, 52);
-        return $pdf->Output('asdasd.pdf', 'I');
+        return $pdf->Output(strtoupper($persona->nombre_primer . " " . $persona->nombre_segundo) . '.pdf', 'I');
     }
 }

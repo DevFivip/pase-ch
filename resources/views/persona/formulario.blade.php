@@ -12,7 +12,7 @@
                         @csrf
 
                         <input type="hidden" name="status" value="0">
-                        
+
                         <div class="form-group">
                             <label for=""><b>Primer Nombre</b></label>
                             <input type="text" class="form-control" name="nombre_primer">
