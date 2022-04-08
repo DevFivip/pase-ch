@@ -941,24 +941,59 @@
 
             Instascan.Camera.getCameras().then(function(cameras) {
 
-                document.getElementById('camera-details').innerHTML += JSON.stringify(cameras) + '  ';
-                document.getElementById('camera-details').innerHTML += cameras.length;
+                // document.getElementById('camera-details').innerHTML += JSON.stringify(cameras) + '  ';
+                // document.getElementById('camera-details').innerHTML += cameras.length;
 
                 console.log(cameras)
                 console.log(cameras.length)
 
                 if (cameras.length > 0) {
-                    if (cameras.length == 2) {
-                        scanner.start(cameras[1]);
-                    } else {
-                        scanner.start(cameras[0]);
-                    }
 
+                    if (cameras.length === 1) {
+                        scanner.start(cameras[1]);
+                        // document.getElementById('camera-details').innerHTML += 'this 1';
+                    }
+                    if (cameras.length === 2) {
+                        scanner.start(cameras[1]);
+                        // document.getElementById('camera-details').innerHTML += 'this 2-0';
+                    }
                     if (cameras.length === 4) {
                         scanner.start(cameras[2]);
-                    } else {
-                        scanner.start(cameras[0]);
+                        // document.getElementById('camera-details').innerHTML += 'this 4-2';
                     }
+
+
+                    // let cameras_back = cameras.find((el) => {
+                    //     if (el.id.indexOf('back') >= 1) {
+                    //         return el
+                    //     }
+
+                    // })
+
+                    // document.getElementById('camera-details').innerHTML += JSON.stringify(cameras_back) + '  ';
+
+                    // scanner.start(cameras_back);
+
+
+
+                    // if (cameras.length === 2) {
+                    //     scanner.start(cameras[0]);
+                    //     document.getElementById('camera-details').innerHTML += 'this';
+
+                    // }
+                    // else {
+                    //     scanner.start(cameras[0]);
+                    //     document.getElementById('camera-details').innerHTML += 'those';
+                    // }
+
+                    // if (cameras.length === 4) {
+                    //     document.getElementById('camera-details').innerHTML += 'this 2';
+                    //     scanner.start(cameras[2]);
+                    // }
+                    //  else {
+                    //     document.getElementById('camera-details').innerHTML += 'those 2';
+                    //     scanner.start(cameras[0]);
+                    // }
 
 
                 } else {
