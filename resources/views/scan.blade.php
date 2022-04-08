@@ -948,11 +948,19 @@
                 console.log(cameras.length)
 
                 if (cameras.length > 0) {
-                    if (cameras.length > 1) {
+                    if (cameras.length == 2) {
                         scanner.start(cameras[1]);
                     } else {
                         scanner.start(cameras[0]);
                     }
+
+                    if (cameras.length === 4) {
+                        scanner.start(cameras[2]);
+                    } else {
+                        scanner.start(cameras[0]);
+                    }
+
+
                 } else {
                     console.error('No cameras found.');
                 }
