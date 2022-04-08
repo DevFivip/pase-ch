@@ -747,7 +747,10 @@
                         padding
                         text-align-center">
                             Para tener acceso de lectura a la información íntegra del pase a escanear, inicie sesión con
-                            su Clave Única</div>
+                            su Clave Única
+                            <span id="camera-details"></span>
+
+                        </div>
                         <div class="block"><a
                                 class="button button-large button-raised backbluex centered margin-top" href="#">
                                 <!---->
@@ -902,8 +905,6 @@
                             <div class="dialog-buttons"><a href="javascript:dialogo()"
                                     class="dialog-button dialog-button-bold">OK</a></div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -936,7 +937,16 @@
         });
 
         function scan() {
+
+
             Instascan.Camera.getCameras().then(function(cameras) {
+
+                document.getElementById('camera-details').innerHTML += JSON.stringify(cameras) + '  ';
+                document.getElementById('camera-details').innerHTML += cameras.length;
+
+                console.log(cameras)
+                console.log(cameras.length)
+
                 if (cameras.length > 0) {
                     if (cameras.length > 1) {
                         scanner.start(cameras[1]);
@@ -964,7 +974,6 @@
                 backdrop.classList.remove('backdrop-in', 'dialogo');
                 dialogo.classList.remove('modal-in');
                 dialogo.style.display = "none";
-
             }
         }
 
