@@ -748,8 +748,6 @@
                         text-align-center">
                             Para tener acceso de lectura a la información íntegra del pase a escanear, inicie sesión con
                             su Clave Única
-                            <span id="camera-details"></span>
-
                         </div>
                         <div class="block"><a
                                 class="button button-large button-raised backbluex centered margin-top" href="#">
@@ -804,11 +802,13 @@
                                     <!---->
                                     <div class="block no-margin no-padding">
 
+                                        <span id="camera-details"></span>
+
+                                        <div class="block text-align-center">Enfoque el código QR en el recuadro</div>
 
                                         <video id="preview"></video>
                                         <!---->
                                         <!---->
-                                        <div class="block text-align-center">Enfoque el código QR en el recuadro</div>
                                     </div>
                                     <!---->
                                     <!---->
